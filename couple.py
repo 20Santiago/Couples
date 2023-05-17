@@ -17,7 +17,7 @@ medida_cuadro = 200  # Medida de la imágen en píxeles.
 
 
 #Para la parte trasera de cada imágen.
-nombre_imagen_oculta = "Downloads\Tapar.png"
+nombre_imagen_oculta = "Tapar.png"
 imagen_oculta = pygame.image.load(nombre_imagen_oculta)
 segundos_mostrar_pieza = 2 #Ocultar pieza si no es la correcta
 
@@ -45,14 +45,14 @@ class Cuadro:
 
 #Arreglo de objetos.
 cuadros = [
-    [Cuadro("Downloads\Astronauta.png"), Cuadro("Downloads\Astronauta.png"),
-     Cuadro("Downloads\Blackhole.png"), Cuadro("Downloads\Blackhole.png")],
-    [Cuadro("Downloads\Brillo.png"), Cuadro("Downloads\Brillo.png"),
-     Cuadro("Downloads\cometa.png"), Cuadro("Downloads\cometa.png")],
-    [Cuadro("Downloads\espacio.png"), Cuadro("Downloads\espacio.png"),
-     Cuadro("Downloads\galaxia.png"), Cuadro("Downloads\galaxia.png")],
-    [Cuadro("Downloads\planetas.png"), Cuadro("Downloads\planetas.png"),
-     Cuadro("Downloads\universo.png"), Cuadro("Downloads\universo.png")],
+    [Cuadro("Astronauta.png"), Cuadro("Astronauta.png"),
+     Cuadro("Blackhole.png"), Cuadro("Blackhole.png")],
+    [Cuadro("Brillo.png"), Cuadro("Brillo.png"),
+     Cuadro("cometa.png"), Cuadro("cometa.png")],
+    [Cuadro("espacio.png"), Cuadro("espacio.png"),
+     Cuadro("galaxia.png"), Cuadro("galaxia.png")],
+    [Cuadro("planetas.png"), Cuadro("planetas.png"),
+     Cuadro("universo.png"), Cuadro("universo.png")],
 ]
 
 
@@ -64,11 +64,11 @@ color_azul = (30, 136, 229)
 
 
 #Sonidos.
-sonido_fondo = pygame.mixer.Sound("C:\Users\Santiago\Downloads\Fondo.wav.ogg")
-sonido_clic = pygame.mixer.Sound("C:\Users\Santiago\Downloads\click.wav.wav")
-sonido_exito = pygame.mixer.Sound("C:\Users\Santiago\Downloads\ganar.wav.wav")
-sonido_fracaso = pygame.mixer.Sound("C:\Users\Santiago\Downloads\equivocado.wav.wav")
-sonido_voltear = pygame.mixer.Sound("C:\Users\Santiago\Downloads\pasar.wav.wav")
+sonido_fondo = pygame.mixer.Sound("Fondo.wav.ogg")
+sonido_clic = pygame.mixer.Sound("click.wav.wav")
+sonido_exito = pygame.mixer.Sound("ganar.wav.wav")
+sonido_fracaso = pygame.mixer.Sound("equivocado.wav.wav")
+sonido_voltear = pygame.mixer.Sound("pasar.wav.wav")
 
 
 #Calculamos el tamaño de la pantalla en base al tamaño de los cuadros.
