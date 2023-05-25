@@ -29,6 +29,34 @@ o puede estar mostrado (cuando se voltea la imagen)
 También tiene una fuente o nombre de imagen que servirá para compararlo más tarde
 """
 
+#Punto donde utilizamos *arg, **Kwargs y un decorador
+#*args y **kwargs son utilizados en el decorador medir_tiempo_de_ejecucion para permitir que el decorador acepte cualquier número de 
+# argumentos posicionales y de palabras clave, y luego los pasa a la función func cuando se llama a func(*args, **kwargs). 
+# Esto asegura que el decorador sea compatible con cualquier función que se decore con él, independientemente de la cantidad y tipo de 
+# argumentos que la función pueda aceptar.
+# Decorador para medir el tiempo de ejecución de un método y se utilizan *arg 
+def medir_tiempo_de_ejecucion(func):
+    def wrapper(*args, **kwargs):
+        import time
+        inicio = time.time()
+        resultado = func(*args, **kwargs)
+        fin = time.time()
+        tiempo_total = fin - inicio
+        print(f"Tiempo de ejecución de {func.__name__}: {tiempo_total} segundos")
+        return resultado
+    return wrapper
+
+class Ejemplo:
+    @medir_tiempo_de_ejecucion
+    def metodo_ejemplo(self):
+        # Simulación de un proceso que toma tiempo
+        time.sleep(2)
+        print("Método ejecutado")
+
+# Crear una instancia de la clase y llamar al método decorado
+ejemplo = Ejemplo()
+ejemplo.metodo_ejemplo()
+
 
 class Cuadro:
     def __init__(self, fuente_imagen):
@@ -42,8 +70,13 @@ class Cuadro:
         self.fuente_imagen = fuente_imagen
         self.imagen_real = pygame.image.load(fuente_imagen)
 
+    @medir_tiempo_de_ejecucion 
+    def metodo_ejemplo(self):
+        # Aquí iría el código del método que quieres medir el tiempo de ejecución
+        pass
 
-#Arreglo de objetos.
+
+# Arreglo de objetos.
 cuadros = [
     [Cuadro("Astronauta.png"), Cuadro("Astronauta.png"),
      Cuadro("Blackhole.png"), Cuadro("Blackhole.png")],
