@@ -1,8 +1,8 @@
-import math     # Redondear.
+import math      # Redondear.
 import pygame 
-import sys      # Para salir con el click.
-import time     # Ciclo infinito.
-import random   # Randonizar (cambio de posición).
+import sys       # Para salir con el click.
+import time      # Ciclo infinito.
+import random    # Randonizar (cambio de posición).
 
 
 #Iniciamos con pygame para usar sonido, pantalla...
@@ -46,6 +46,8 @@ def medir_tiempo_de_ejecucion(func):
         return resultado
     return wrapper
 
+
+
 class Ejemplo:
     @medir_tiempo_de_ejecucion
     def metodo_ejemplo(self):
@@ -56,6 +58,7 @@ class Ejemplo:
 # Crear una instancia de la clase y llamar al método decorado
 ejemplo = Ejemplo()
 ejemplo.metodo_ejemplo()
+
 
 
 class Cuadro:
@@ -70,10 +73,6 @@ class Cuadro:
         self.fuente_imagen = fuente_imagen
         self.imagen_real = pygame.image.load(fuente_imagen)
 
-    @medir_tiempo_de_ejecucion 
-    def metodo_ejemplo(self):
-        # Aquí iría el código del método que quieres medir el tiempo de ejecución
-        pass
 
 
 # Arreglo de objetos.
@@ -140,6 +139,7 @@ x2 = None   #Sirve para la segunda tarjeta.
 y2 = None   #Sirve para la segunda tarjeta.
 
 
+
 # Ocultar todos los cuadros
 def ocultar_todos_los_cuadros():
     for fila in cuadros:
@@ -181,6 +181,20 @@ def reiniciar_juego():
     juego_iniciado = False
 
 
+##########################
+
+def reproducir_sonido_al_ejecutar(func):
+    def wrapper(*args, **kwargs):
+        pygame.mixer.Sound.play(sonido_clic)
+        resultado = func(*args, **kwargs)
+        return resultado
+    return wrapper
+
+
+
+#################
+
+@reproducir_sonido_al_ejecutar
 def iniciar_juego():
     pygame.mixer.Sound.play(sonido_clic)
     global juego_iniciado
@@ -197,8 +211,11 @@ pygame.display.set_caption('Memorama en Python') #Título
 pygame.mixer.Sound.play(sonido_fondo, -1) #El -1 indica un loop infinito.
 
 
+
+
 #Ciclo infinito.
-while True:
+while True:  
+
     #Escuchar eventos, ciclo infinito que se repite varias veces por segundo.
     for event in pygame.event.get():
         # Si quitan el juego, salimos
