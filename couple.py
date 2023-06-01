@@ -1,8 +1,8 @@
 import math      # Redondear.
 import pygame 
-import sys       # Para salir con el click.
+import sys       # Para salir con el click. Exit Game
 import time      # Ciclo infinito.
-import random    # Randonizar (cambio de posición).
+import random    # Randonizar (cambio de posición). 
 
 
 #Iniciamos con pygame para usar sonido, pantalla...
@@ -36,7 +36,7 @@ También tiene una fuente o nombre de imagen que servirá para compararlo más t
 # argumentos que la función pueda aceptar.
 # Decorador para medir el tiempo de ejecución de un método y se utilizan *arg 
 def medir_tiempo_de_ejecucion(func):
-    def wrapper(*args, **kwargs):
+    def wrapper(*args, **kwargs):   # Retornar la funcion decorada
         import time
         inicio = time.time()
         resultado = func(*args, **kwargs)
@@ -48,11 +48,11 @@ def medir_tiempo_de_ejecucion(func):
 
 
 
-class Ejemplo:
+class Ejemplo:  #Usamos el decorador
     @medir_tiempo_de_ejecucion
     def metodo_ejemplo(self):
         # Simulación de un proceso que toma tiempo
-        time.sleep(2)
+        time.sleep(2)             # se utiliza para pausar la ejecución de un programa durante un determinado período de tiempo
         print("Método ejecutado")
 
 # Crear una instancia de la clase y llamar al método decorado
@@ -61,8 +61,8 @@ ejemplo.metodo_ejemplo()
 
 
 
-class Cuadro:
-    def __init__(self, fuente_imagen):
+class Cuadro:                        #Constructor
+    def __init__(self, fuente_imagen):     #Si se muestra, no se descubre
         self.mostrar = True
         self.descubierto = False
         """
@@ -231,6 +231,18 @@ while True:
             """
             # Si el click fue sobre el botón y el juego no se ha iniciado, entonces iniciamos el juego
             xAbsoluto, yAbsoluto = event.pos
+            try:
+                if boton.collidepoint(event.pos):
+                    if not juego_iniciado:
+                        iniciar_juego()
+                else:
+                    # Si no hay juego iniciado, ignoramos el clic
+                    if not juego_iniciado:
+                        raise Exception("No hay juego iniciado")
+            except Exception as e:
+                print(e)
+           
+        
             if boton.collidepoint(event.pos):
                 if not juego_iniciado:
                     iniciar_juego()
@@ -256,6 +268,7 @@ while True:
                 if cuadro.mostrar or cuadro.descubierto:
                     # continue ignora lo de abajo y deja que el ciclo siga
                     continue
+                
                 # Si es la primera vez que tocan la imagen (es decir, no están buscando el par de otra, sino apenas
                 # están descubriendo la primera)
                 if x1 is None and y1 is None:
