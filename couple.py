@@ -231,6 +231,8 @@ while True:
             """
             # Si el click fue sobre el botón y el juego no se ha iniciado, entonces iniciamos el juego
             xAbsoluto, yAbsoluto = event.pos
+
+            #Código que verifica si el botón ha sido presionado dentro de un bloque try
             try:
                 if boton.collidepoint(event.pos):
                     if not juego_iniciado:
@@ -261,7 +263,7 @@ while True:
                 arreglo) lo cual es correcto. Por poner otro ejemplo, si el clic fue en la X 50, al dividir da 0.5 y
                 resulta en el índice 0
                 """
-                x = math.floor(xAbsoluto / medida_cuadro)
+                x = math.floor(xAbsoluto / medida_cuadro)    #Se obtiene el índice del arreglo.
                 y = math.floor(yAbsoluto / medida_cuadro)
                 # Primero lo primero. Si  ya está mostrada o descubierta, no hacemos nada
                 cuadro = cuadros[y][x]
